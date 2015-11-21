@@ -88,15 +88,15 @@ run_analysis <- function(datasetDir = "./UCI_HAR_Dataset") {
     ##      subject.
     ## ###
     ## Group by dataset("test" & "train", subject then activity
-    dataExtract %>% 
+    tidyDataset <- dataExtract %>% 
         group_by(dataset, subject, activity) %>% 
             summarize_each(funs(mean))
-    ## Make the column names more meaningfully accurate
-    names(dataExtract) <- c(names(dataExtract)[1:3],
-                            meaningful_name(names(dataExtract)[-1:-3]))
+    
+    names(tidyDataset) <- c(names(tidyDataset)[1:3],
+                            meaningful_name(names(tidyDataset)[-1:-3]))
     
     ## Return tidy data set
-    dataExtract
+    tidyDataset
 }
 
 ## Create a data set for a given type
@@ -146,11 +146,9 @@ read_label_from_index_map <- function(labelIndexMap, index) {
 
 ## For the given data set extract the columns indicated by colNames
 ## and label the columns from the featuresLabelsMap
-extract_columns <- function(data, featuresLabelsMap, colNames) {
+extract_columns <- function(data, colNames) {
     dataExtract <- data[,c(1:3,colNames)]
-    
-    
-    # names(dataExtract[,4:length(colNames)]) <- colNames
+
     # Return extracted columns
     dataExtract
 }
