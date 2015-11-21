@@ -5,7 +5,7 @@ https://class.coursera.org/getdata-034
 ### Project Contents
 This project consists of the following files:
  - README.md - this file describing the project
- - CodeBook.txt - code book file describing the variables in the data produced by running this code
+ - code_book.md - code book file describing the variables in the data produced by running this code
  - run_analysis.R - the file containing the R script
 
 ### Purpose
